@@ -1,5 +1,5 @@
-import NonFungibleToken from 0xf8d6e0586b0a20c7
-import Replica from 0xf8d6e0586b0a20c7
+import NonFungibleToken from 0x631e88ae7f1d7c20
+import Replica from 0x6f48f852926e137a
 
 transaction(recipient: Address, withdrawID: UInt64) {
     prepare(acct: AuthAccount) {

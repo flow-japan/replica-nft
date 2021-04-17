@@ -7,11 +7,11 @@ import { Util } from './services/util';
 
 // USAGE:
 //   Check Signature
-//     $ curl 'http://localhost:5000/replica-nft-api/us-central1/check?message={<contractAddress>-<tokenId>-<owner>-<flowOwner>-<expiresUnixtime>}&signature={signature}'
-//       e.g. curl 'http://localhost:5000/replica-nft-api/us-central1/check?message=0xd07dc4262bcdbf85190c01c996b4c06a461d2430-128695-0x98d562c7A4781e3e6c0d16F67469b0A3b0CB25C7-0xf8d6e0586b0a20c7-4102434800&signature=0x171f50b4ae206867be24fce0128504205f0122f129cdf3e9107a51004aeec94f5184477effce4d3fed7b6e377f781dce4dfe4323f4b4f65a89f356321f8c8bbd1b'
+//     $ curl 'https://us-central1-replica-nft-api.cloudfunctions.net/check?message={<contractAddress>-<tokenId>-<owner>-<flowOwner>-<expiresUnixtime>}&signature={signature}'
+//       e.g. curl 'https://us-central1-replica-nft-api.cloudfunctions.net/check?message=0xd07dc4262bcdbf85190c01c996b4c06a461d2430-128695-0x98d562c7A4781e3e6c0d16F67469b0A3b0CB25C7-0x6f48f852926e137a-4102434800&signature=0x6dc7c031bd6c324a536d8f8160b5017030881bf74ce1ee50790e93fc9313cc5338fa3b3d24bf02ea9b073785397c75679af9b3b7bec37c9651ee3005bef7607d1b'
 //   Mint
-//     $ curl 'http://localhost:5000/replica-nft-api/us-central1/mint?message={<contractAddress>-<tokenId>-<owner>-<flowOwner>-<expiresUnixtime>}&signature={signature}'
-//       e.g. curl 'http://localhost:5000/replica-nft-api/us-central1/mint?message=0xd07dc4262bcdbf85190c01c996b4c06a461d2430-128695-0x98d562c7A4781e3e6c0d16F67469b0A3b0CB25C7-0xf8d6e0586b0a20c7-4102434800&signature=0x171f50b4ae206867be24fce0128504205f0122f129cdf3e9107a51004aeec94f5184477effce4d3fed7b6e377f781dce4dfe4323f4b4f65a89f356321f8c8bbd1b'
+//     $ curl 'https://us-central1-replica-nft-api.cloudfunctions.net/mint?message={<contractAddress>-<tokenId>-<owner>-<flowOwner>-<expiresUnixtime>}&signature={signature}'
+//       e.g. curl 'https://us-central1-replica-nft-api.cloudfunctions.net/mint?message=0xd07dc4262bcdbf85190c01c996b4c06a461d2430-128695-0x98d562c7A4781e3e6c0d16F67469b0A3b0CB25C7-0x6f48f852926e137a-4102434800&signature=0x6dc7c031bd6c324a536d8f8160b5017030881bf74ce1ee50790e93fc9313cc5338fa3b3d24bf02ea9b073785397c75679af9b3b7bec37c9651ee3005bef7607d1b'
 
 const getParams = (req: any) => {
   const { message, signature } = req.query;

@@ -1,4 +1,4 @@
-import Replica from 0xf8d6e0586b0a20c7
+import Replica from 0x6f48f852926e137a
 
 pub fun main(address: Address): Bool {
     return getAccount(address)
