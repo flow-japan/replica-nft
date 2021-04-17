@@ -24,7 +24,6 @@ const validate = async (req: any) => {
     const { contractAddress, tokenId, owner, expiresAt, message, signature } = getParams(req);
     if (expiresAt < Math.floor(Date.now() / 1000)) throw new Error('Expired');
     await opensea.validateOwner(contractAddress, tokenId, owner);
-    console.log(123, {message, signature, owner})
     ethUtil.validateSignature(message, signature, owner);
     return { success: true };
   } catch (e) {
@@ -50,7 +49,7 @@ const validateAndMint = async (req: any) => {
     return { success: true }
   } catch (e) {
     console.log(e)
-    return { error: e.message };
+    return { error: 'Error: ' + e.message };
   }
 };
 
