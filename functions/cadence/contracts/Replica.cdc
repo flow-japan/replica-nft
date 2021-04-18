@@ -159,9 +159,9 @@ pub contract Replica: NonFungibleToken {
 
     init() {
         // TODO: 最終的に変更
-        self.CollectionStoragePath = /storage/ReplicaCollection000
-        self.CollectionPublicPath = /public/ReplicaCollection000
-        self.MinterStoragePath = /storage/ReplicaMinter000
+        self.CollectionStoragePath = /storage/ReplicaCollection001
+        self.CollectionPublicPath = /public/ReplicaCollection001
+        self.MinterStoragePath = /storage/ReplicaMinter001
 
         self.totalSupply = 1
         self.existingReplicaIds = {}
