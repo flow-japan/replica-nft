@@ -25,7 +25,10 @@ pub contract Replica: NonFungibleToken {
         pub let ownerAtTime: String
         pub let message: String
         pub let signature: String
-        pub let power: UInt8
+        pub let rarity: UInt8
+        pub let hp: UInt32
+        pub let def: UIn32
+        pub let atk: UInt32
 
         init(contractAddress: String, tokenId: UInt64, ownerAtTime: String, message: String, signature: String) {
             pre {
@@ -38,7 +41,15 @@ pub contract Replica: NonFungibleToken {
             self.ownerAtTime = ownerAtTime
             self.message = message
             self.signature = signature
-            self.power = getCurrentBlock().id[0] // pseudo-random number
+
+            // Set parameters by pseudo-random number
+            let block = getCurrentBlock()
+            let rarityBase: Int = Int(block.id[1]) % 100 * 10
+            self.rarity: UInt8 = UInt8(rarityBase > 999 ? 5 : rarityBase > 990 ? 4 : rarityBase > 850 ? 3 : rarityBase > 500 ? 2 : 1)
+            self.hp: UInt32 = UInt32(Int(Int(block.id[2]) % 100 + 1) * Int(Int(block.id[3]) % 100  + 1))
+            self.def: UInt32 = UInt32(Int(Int(block.id[4]) % 100 + 1) * Int(Int(block.id[5]) % 100 + 1))
+            self.atk: UInt32 = UInt32(Int(Int(block.id[6]) % 100 + 1) * Int(Int(block.id[7]) % 100 + 1))
+
             Replica.signatures[self.id] = {
                 "signer": self.ownerAtTime,
                 "message": self.message,

@@ -14,7 +14,10 @@ pub fun main(account: Address, ids: [UInt64]): [{String: String}] {
             "ownerAtTime": nftRef.ownerAtTime,
             "message": nftRef.message,
             "signature": nftRef.signature,
-            "power": nftRef.power.toString()
+            "rarity": nftRef.rarity.toString(),
+            "hp": nftRef.hp.toString(),
+            "def": nftRef.def.toString(),
+            "atk": nftRef.atk.toString()
         })
         log(nftRef.power.toString())
     }
