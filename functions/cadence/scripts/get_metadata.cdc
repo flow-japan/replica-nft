@@ -19,7 +19,6 @@ pub fun main(account: Address, ids: [UInt64]): [{String: String}] {
             "def": nftRef.def.toString(),
             "atk": nftRef.atk.toString()
         })
-        log(nftRef.power.toString())
     }
     return metadataArray
 }
