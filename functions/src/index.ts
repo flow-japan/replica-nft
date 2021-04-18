@@ -49,7 +49,7 @@ const validateAndMint = async (req: any) => {
     return { success: true }
   } catch (e) {
     console.log(e)
-    return { error: 'Error: ' + e.message };
+    return { error: (e.message || 'Error Occured') };
   }
 };
 
