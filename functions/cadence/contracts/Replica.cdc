@@ -32,7 +32,7 @@ pub contract Replica: NonFungibleToken {
 
         init(contractAddress: String, tokenId: UInt64, ownerAtTime: String, message: String, signature: String) {
             pre {
-                !Replica.existsReplica(key: contractAddress.concat("-").concat(tokenId.toString()).concat("-").concat(ownerAtTime)): 
+                !Replica.existsReplica(key: contractAddress.concat("-").concat(tokenId.toString())): 
                     "Cannot mint: already minted the replica"
             }
             self.id = Replica.totalSupply
@@ -55,7 +55,7 @@ pub contract Replica: NonFungibleToken {
                 "message": self.message,
                 "signature": self.signature
             }
-            Replica.existingReplicaIds[contractAddress.concat("-").concat(tokenId.toString()).concat("-").concat(ownerAtTime)] = self.id
+            Replica.existingReplicaIds[contractAddress.concat("-").concat(tokenId.toString())] = self.id
             Replica.totalSupply = Replica.totalSupply + 1 as UInt64
             emit Mint(id: self.id, contractAddress: self.contractAddress, tokenId: self.tokenId, ownerAtTime: self.ownerAtTime)
         }
@@ -141,7 +141,7 @@ pub contract Replica: NonFungibleToken {
         return <-create Replica.Collection()
     }
 
-    // key: <contractAddress>-<tokenId>-<owner>
+    // key: <contractAddress>-<tokenId>
     pub fun existsReplica(key: String): Bool {
         if Replica.existingReplicaIds[key] == nil {
             return false
@@ -149,7 +149,7 @@ pub contract Replica: NonFungibleToken {
         return Replica.existingReplicaIds[key]! > 0 as UInt64
     }
 
-    // key: <contractAddress>-<tokenId>-<owner>
+    // key: <contractAddress>-<tokenId>
     pub fun getSignature(key: String): {String: String} {
         if Replica.existingReplicaIds[key] == nil {
             return {}
