@@ -33,7 +33,8 @@ const validate = async (req: any) => {
 
 const validateAndMint = async (req: any) => {
   try {
-    await validate(req);
+    const validateResult = await validate(req);
+    if (!validateResult.success) return validateResult;
 
     const { contractAddress, tokenId, owner, flowOwner, message, signature } = getParams(req);
     const util = new Util(config);
