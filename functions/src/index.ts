@@ -65,6 +65,10 @@ export const mint = functions.https.onRequest((req, res) => {
 
 export const check = functions.https.onRequest((req, res) => {
   validate(req).then((result: any) => {
-    res.json(result);
+    if (result.success) {
+      res.json(result);
+    } else {
+      res.status(400).send(result);
+    }
   });
 });
